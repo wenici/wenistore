@@ -1,0 +1,129 @@
+<main>
+
+  <div class="box">
+    <div class="inner-box">
+
+      <div class="forms-wrap">
+        <form
+          class="sign-in-form"
+          [formGroup]="registerForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="heading">
+            <h2>Inscrivez-vous</h2>
+            <h6>Vous êtes déja inscrit ?</h6>
+            <a href="/login" class="toggle"> connectez-vous</a>
+          </div>
+          <div class="actual-form">
+            <div class="input-wrap">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                ></path>
+              </svg>
+              <input
+                type="text"
+                placeholder="Nom"
+                formControlName="firstName"
+              />
+            </div>
+            <div class="input-wrap">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              <input
+                type="email"
+                placeholder="Email"
+                formControlName="email"
+              />
+            </div>
+            <div class="input-wrap">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                ></path>
+              </svg>
+              <input
+                type="password"
+                placeholder="Mot de passe"
+                formControlName="password"
+              />
+            </div>
+            <div class="input-wrap">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                ></path>
+              </svg>
+              <input
+                type="password"
+                placeholder="Confirmer le mot de passe"
+                formControlName="confirmPassword"
+              />
+            </div>
+            <button type="submit" class="sign-btn">
+              Inscription
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="carousel">
+        <div class="images-wrapper">
+          <img src="assets/img/image3.png" class="image img-3 show" alt="" />
+        </div>
+
+        <div class="text-slider">
+          <div class="text-wrap">
+            <div class="text-group">
+              <h2>An innovative community</h2>
+            </div>
+          </div>
+
+          <div class="bullets">
+            <span class="active" data-value="1"></span>
+            <span class="active__1" data-value="1"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

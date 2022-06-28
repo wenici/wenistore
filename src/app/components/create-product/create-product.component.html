@@ -1,0 +1,114 @@
+<div class="uk-container">
+  <div class="uk-card uk-card-default uk-card-body uk-margin-top">
+      <h3 class="uk-card-title">Création d'un produit</h3>
+      <!-- <form (ngSubmit)="onSubmit()">
+
+          <div class="uk-flex-box">
+            <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Nom du produit</label>
+              <div class="uk-form-controls">
+                  <input class="uk-input" type="text" placeholder="Product Name" [(ngModel]="name">
+              </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-stacked-text">Prix du produit</label>
+                <div class="uk-form-controls">
+                    <input class="uk-input"  type="number" placeholder="Prix normal" [(ngModel]="product.price">
+                </div>
+            </div>
+            <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Prix solde du produit</label>
+              <div class="uk-form-controls">
+                  <input class="uk-input" type="number" placeholder="Prix solde"  [(ngModel]="product.price_solde">
+              </div>
+            </div>
+          </div>
+          <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Description du produit</label>
+              <div class="uk-form-controls">
+                  <textarea class="uk-textarea" rows="5" placeholder="Description du Produit" [(ngModel]="product.description"></textarea>
+              </div>
+          </div>
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">Fiche technique du produit</label>
+            <div class="uk-form-controls">
+                <textarea class="uk-textarea" rows="10" placeholder="Fiche technique" [(ngModel]="product.fichetech"></textarea>
+            </div>
+          </div>
+          <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Product Category</label>
+              <div class="uk-form-controls">
+                  <select class="uk-select uk-input" >
+                      <option *ngFor="let category of categories | async">{{category.name}}</option>
+                  </select>
+              </div>
+          </div>
+          <h3> {{ categories | async | json }} </h3>
+          <hr class="uk-divider-icon">
+          <div class="uk-margin">
+            <button class="uk-button uk-text-bold uk-margin-top">
+              Ajouter le produit
+            </button>
+          </div>
+      </form> -->
+      <form (ngSubmit)="onSubmit()" [formGroup]="productForm" novalidate>
+        
+        <div class="uk-flex-box">
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">Nom du produit</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" placeholder="Product Name" formControlName="name">
+            </div>
+          </div>
+          <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Prix du produit</label>
+              <div class="uk-form-controls">
+                  <input class="uk-input"  type="number" placeholder="Prix normal" formControlName="price">
+              </div>
+          </div>
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">Prix solde du produit</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="number" placeholder="Prix solde" formControlName="price_solde">
+            </div>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-stacked-text">L'image produit</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="file" formControlName="imageURL">
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">Description du produit</label>
+            <div class="uk-form-controls">
+                <textarea class="uk-textarea" rows="5" placeholder="Description du Produit" formControlName="description"></textarea>
+            </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-stacked-text">Fiche technique du produit</label>
+          <div class="uk-form-controls">
+              <textarea class="uk-textarea" rows="10" placeholder="Fiche technique" formControlName="fichetech"></textarea>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-stacked-text">Product Category</label>
+          <div class="uk-form-controls">
+              <select class="uk-select uk-input" formControlName="category">
+                  <option value="Informatique">Informatique</option>
+                  <option value="Pharmacie">Pharmacie</option>
+                  <option value="Sport">Sport</option>
+                  <option value="Supermarché">Supermarché</option>
+                  <option value="Vêtements">Vêtements</option>
+              </select>
+          </div>
+      </div>
+        <hr class="uk-divider-icon">
+        <div class="uk-margin">
+          <button class="uk-button uk-text-bold uk-margin-top">
+            Ajouter le produit
+          </button>
+        </div>
+    </form>
+    </div>
+</div>

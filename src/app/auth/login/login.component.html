@@ -1,0 +1,77 @@
+<main>
+  <div class="box">
+      <div class="inner-box">
+          <div class="forms-wrap">
+              <form autocomplete="off" class="sign-in-form">
+                  <div class="heading">
+                      <h2>Connectez-vous</h2>
+                      <h6>Vous n'êtes pas encore inscrit ?</h6>
+                      <a href="/register" class="toggle"> Inscrivez-vous</a>
+                  </div>
+
+                  <div class="actual-form">
+                      <div class="input-wrap">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                              </path>
+                          </svg>
+                          <input type="email" class="form-control" placeholder="Email" #userEmail  required />
+                      </div>
+                      <div class="input-wrap">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                              </path>
+                          </svg>
+                          <input type="password" name="password" class="form-control" placeholder="Mot de passe"
+                              #userPassword required />
+                      </div>
+
+                      <input type="submit" value="Connexion" class="sign-btn" />
+
+                      <p class="text">
+                          Mot de passe oublié ?
+                          <a href="#">Besoin d'aide ?</a>
+                      </p>
+                  </div>
+                  <!-- <div class="box-or">
+                      <div class="or">
+                          <div class="line-or"></div>
+                          <div class="line-or-line"></div>
+                          <div class="or-line"></div>
+                      </div>
+                      <div class="sociaux">
+                          <div class="icon gmail" (click)="authService.GoogleAuth()">
+                              <img src="assets/img/icons8-google.svg" alt="">
+                              <span>Gmail</span>
+                          </div>
+                      </div>
+                  </div> -->
+              </form>
+
+          </div>
+
+          <div class="carousel">
+              <div class="images-wrapper">
+                  <img src="assets/img/image3.png" class="image img-3 show" alt="" />
+              </div>
+
+              <div class="text-slider">
+                  <div class="text-wrap">
+                      <div class="text-group">
+                          <h2>Invite students to your class</h2>
+                      </div>
+                  </div>
+
+                  <div class="bullets">
+                      <span class="active" data-value="1"></span>
+                      <span class="active__1" data-value="1"></span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</main>
