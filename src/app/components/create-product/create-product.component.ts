@@ -1,62 +1,30 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
-
-import { Observable } from 'rxjs';
-import { map,finalize } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ProductsService } from 'src/app/shared/services/products.service';
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
+import {
+  AngularFireStorage,
+} from '@angular/fire/compat/storage';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from "@angular/router";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { url } from 'inspector';
 
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
-  styleUrls: ['./create-product.component.css']
+  styleUrls: ['./create-product.component.css'],
 })
 export class CreateProductComponent implements OnInit {
 
-  // categoriesCollection: AngularFirestoreCollection<Categories>;
-  // categories: Observable<Categories[]>;
-  // snapshot: any;
+  isValidForm = false;
+  imagesUrl: string[] = [];
+  quantity: number = 0;
+  isMyProduct: boolean = false;
+  isInvalid: boolean = true;
 
-  // productsCollection: AngularFirestoreCollection<Product>;
-  // products: Observable<Product[]>;
-  // productDoc: AngularFirestoreDocument<Product>;
-
-  // constructor(
-  //   private dbstore: AngularFirestore,
-  //   public productService: ProductsService,
-  // ) { }
-
-  // ngOnInit(): void {
-  //   this.categoriesCollection = this.dbstore.collection('categories');
-  //   this.categories = this.categoriesCollection.valueChanges();
-  //   this.snapshot = this.categoriesCollection.snapshotChanges()
-  //       .pipe(
-  //         map(actions => actions.map(a => a.payload.doc.data()))
-  //     )
-
-  //   this.productsCollection = this.dbstore.collection('products');
-  //   this.products = this.productsCollection.snapshotChanges().pipe(
-  //       map(actions => actions.map(a => {
-  //           const data = a.payload.doc.data() as Product;
-  //           data.id = a.payload.doc.id;
-  //           return data;
-  //       }))
-  //   );
-  // }
-
-  @Input() file: File;
-  task: AngularFireUploadTask;
-
-  percentage: Observable<number>;
-  snapshot: Observable<any>;
-  downloadURL: string;
-
-  public productForm: FormGroup;
+  public addProductForm: FormGroup;
 
   constructor(
     private storage: AngularFireStorage,
@@ -65,66 +33,112 @@ export class CreateProductComponent implements OnInit {
     public formBuilder: FormBuilder,
     public router: Router
   ) {
-    this.productForm = this.formBuilder.group({
+    this.addProductForm = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
       price_solde: ['', Validators.required],
       description: ['', Validators.required],
       fichetech: ['', Validators.required],
       category: ['', Validators.required],
-      imageURL: ['',Validators.required],
       createdAt: new Date(),
-    })
+    });
   }
 
-
-  ngOnInit(): void {
-    // this.startUpload();
+  resetForm(product: Product): void {
+    
   }
 
-  // startUpload() {
-  //   // The storage path
-  //   const path = `test/${Date.now()}_${this.file.name}`;
+  ngOnInit(): void {}
 
-  //   // Reference to storage bucket
-  //   const ref = this.storage.ref(path);
+  get name(): AbstractControl | null {
+    return this.addProductForm.get('name');
+  }
 
-  //   // The main task
-  //   this.task = this.storage.upload(path, this.file);
+  get price(): AbstractControl | null {
+    return this.addProductForm.get('price');
+  }
 
-  //   // Progress monitoring
-  //   this.percentage = this.task.percentageChanges();
+  get price_solde(): AbstractControl | null {
+    return this.addProductForm.get('price_solde');
+  }
 
-  //   this.snapshot   = this.task.snapshotChanges().pipe(
-  //     tap(console.log),
-  //     // The file's download URL
-  //     finalize( async() =>  {
-  //       this.downloadURL = await ref.getDownloadURL().toPromise();
+  get description(): AbstractControl | null {
+    return this.addProductForm.get('description');
+  }
 
-  //       this.dbstore.collection('products').add( { downloadURL: this.downloadURL, path });
-  //     }),
-  //   );
-  // }
+  get fichetech(): AbstractControl | null {
+    return this.addProductForm.get('fichetech');
+  }
+
+  get category(): AbstractControl | null {
+    return this.addProductForm.get('category');
+  }
 
   onSubmit() {
-    this.productService.createProduct(this.productForm.value);
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top',
-      showConfirmButton: false,
-      timer: 2000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    if(this.addProductForm.valid) {
+      const product: Product = {
+        name: this.addProductForm.get('name')?.value,
+        price: this.addProductForm.get('price')?.value,
+        price_solde: this.addProductForm.get('price_solde')?.value,
+        description: this.addProductForm.get('description')?.value,
+        fichetech: this.addProductForm.get('fichetech')?.value,
+        category: this.addProductForm.get('category')?.value,
+        imageURL: this.imagesUrl,
+        quantity: this.quantity,
+        isMyProduct: true,
+        createdAt: new Date(),
+      };
+      try {
+       this.productService.addProduct(product);
+       const Toast = Swal.mixin({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: 'success',
+        title: 'Produit enregistré avec succès',
+      });
+      } catch (error) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'error',
+          title: 'Erreur d\'enregistrement',
+        });
       }
-    })
-    Toast.fire({
-      icon: 'success',
-      title: 'Produit enregistré avec succès'
-    })
-   };
+    }
 
+  }
 
-
+  async selectFiles(event: any): Promise<void> {
+    if (event.target.files) {
+      for (let i = 0; i < File.length; i++) {
+        const file = event.target.files[i];
+        const filePath = `mes_images/${Date.now()}_${file.name}`;
+        const task = this.storage.upload(filePath, file);
+        const uploadTaskSnapshot = await task;
+        const url = await uploadTaskSnapshot.ref.getDownloadURL();
+        this.imagesUrl.push(url);
+        this.imagesUrl.length >= 0
+          ? (this.isInvalid = false)
+          : (this.isInvalid = true);
+      }
+    }
+  }
 }

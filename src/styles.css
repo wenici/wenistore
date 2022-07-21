@@ -46,7 +46,7 @@ svg {
   padding-left: 10px;
   width: 120px;
   border-radius: 10px;
-  margin-left: 40px;
+  /* margin-left: 40px; */
 }
 
 .down-navbar .categories {
@@ -215,26 +215,11 @@ b {
   border-radius: 5px;
 }
 
-.card {
-  background-color: rgb(247, 251, 255);
-  border-radius: 14px;
-  color: white;
-  padding: 0.6rem;
-  height: auto;
-  transition: .4s;
-  box-shadow: #1451A519 0px 6px 15px;
-}
-
-.card:hover {
-  transition: .4s;
-
-}
-
 .cards {
   margin: 0 auto;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
 .cards .card {
@@ -249,7 +234,7 @@ b {
 .cards .card img {
   border-radius: 14px;
   width: 100%;
-  height: 140px;
+  height: 160px;
 }
 
 .cards .card-shopping .prix-stars {
@@ -279,10 +264,6 @@ b {
 }
 
 
-
-
-
-
 .cards-shop {
   margin: 0 auto;
   display: grid;
@@ -299,7 +280,7 @@ b {
   justify-content: space-between;
 }
 
-.cards-shop .card img {
+.cards-shop .card span {
   border-radius: 14px;
   width: 100%;
   height: 140px;
@@ -333,8 +314,6 @@ b {
   cursor: default !important;
   text-decoration: none !important;
 }
-
-
 
 .uk-modal-dialog .overlay-shop {
   border-radius: 17px !important;
@@ -590,12 +569,7 @@ b {
   .responsive-navbar {
     justify-content: space-between;
   }
- }
+}
 /* =============================================== */
 /* ================ End responsive  ============= */
 /* =============================================== */
-
-.uk-open > .uk-modal-dialog
-{
-  width: auto;
-}

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/shared/services/products.service';
 import { Product } from 'src/app/models/product.model';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProductsService } from 'src/app/shared/services/products.service';
+import { ShoppingCardService } from 'src/app/shared/services/shopping-card.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products',
@@ -9,19 +12,29 @@ import { Product } from 'src/app/models/product.model';
 })
 export class ProductsComponent implements OnInit {
 
-  Products: Product[];
+  products: Product[];
+  
+  constructor(
+    public productService: ProductsService,
+    public shopCartService: ShoppingCardService,
+    public router: Router
+  ) { }
 
-  constructor(public productService: ProductsService) { }
-
-  ngOnInit(): void {
-    this.productService.getProductsList().subscribe((res) => {
-      this.Products = res.map((e) => {
+  ngOnInit() {
+    this.productService.getProducts().subscribe((res) => {
+      this.products = res.map((e) => {
         return {
-          data: e.payload.doc.id,
+          id: e.payload.doc.id,
           ...(e.payload.doc.data() as Product),
         };
       });
     });
   }
 
+  goToDetailsProduct(productId?: string): void {
+    this.router.navigate(['product-details', productId]);
+    console.log(productId);
+  }
+
+  
 }

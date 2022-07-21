@@ -1,12 +1,10 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
-import { User } from '../../models/user.model';
-import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import * as firebase from 'firebase/compat';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +13,89 @@ import * as firebase from 'firebase/compat';
 })
 export class LoginComponent implements OnInit {
 
+  isValidForm = false;
+  isLoggedin: boolean = false;
   constructor(
     public authService: AuthService,
-    public afs: AngularFirestore, // Injecter le service Firestore
-    public afAuth: AngularFireAuth, // Injecter le service d'authentification Firebase
-    public router: Router, //
-    public ngZone: NgZone
+    public afAuth: AngularFireAuth,
+    private formBuilder: FormBuilder,
+    public router: Router
   ) {}
+
+  loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    }
+  )
+
+  get email(): AbstractControl | null {
+    return this.loginForm.get('email');
+  }
+
+  get password(): AbstractControl | null {
+    return this.loginForm.get('password');
+  }
+
+  async onSubmit():Promise<void> {
+    if(this.loginForm.valid) {
+      this.isValidForm = true;
+      const email = this.loginForm.get('email')?.value;
+      const password = this.loginForm.get('password')?.value;
+      try {
+        await this.authService.loginUser(email, password);
+        this.isLoggedin = true;
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        Toast.fire({
+          icon: 'success',
+          title: 'Votre êtes bien connecté'
+        })
+        this.router.navigate(['acceuil']);
+      } catch (error) {
+        this.isValidForm = false
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        Toast.fire({
+          icon: 'error',
+          title: 'Veillez, s\'il vous plait, bien renseigner vos données de connexion'
+        })
+      }
+    } else if (this.loginForm.get('email')?.invalid || this.loginForm.get('password')?.invalid){
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      Toast.fire({
+        icon: 'error',
+        title: 'Votre email ou mot de passe  est invalide'
+      })
+    }
+  }
 
   ngOnInit(): void {
   }

@@ -1,13 +1,13 @@
 export interface Product {
-  $key: string;
-  id: string;
+  id?: string;
   name: string;
   price: number;
   price_solde: number;
   description: string;
   fichetech: string;
-  imageURL: File;
+  imageURL: string[];
   category: string;
+  quantity: number;
+  isMyProduct: boolean;
   createdAt: Date;
-  updatedAt: Date;
 }

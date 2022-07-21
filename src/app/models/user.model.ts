@@ -4,6 +4,6 @@ export interface User {
     email?: string;
     createdAd?: any;
     photoURL?: string;
-    // role?: string;
+    role?: string;
     // emailVerified: string;
 }

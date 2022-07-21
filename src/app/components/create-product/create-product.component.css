@@ -28,3 +28,23 @@
 {
   background-color: #01bcbd;
 }
+
+
+.uk-form-controls.input-img {
+  display: none;
+}
+
+.uk-form-controls.icons img{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.imgSelected img {
+  width: 200px;
+  height: 140px;
+}
+
+.uk-container {
+  margin-top: 5rem
+}

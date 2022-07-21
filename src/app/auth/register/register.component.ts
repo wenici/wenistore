@@ -1,12 +1,12 @@
+import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../shared/services/database/user.service';
 import { PasswordValidationService } from './../../shared/services/password-validation.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-register',
@@ -16,13 +16,15 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   isValidForm = false;
+  isLoggedin: boolean = false;
+  userData: any; 
 
   constructor(
     private router: Router,
     private authService: AuthService,
+    private afAuth: AngularFireAuth,
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private dbstore: AngularFirestore,
     private pswValid: PasswordValidationService,
   ) {}
 
@@ -56,7 +58,6 @@ export class RegisterComponent implements OnInit {
 
   openGmailAuto = () => window.open('https://mail.google.com/', '_bank');
 
-
   ngOnInit(): void {}
 
   async onSubmit() {
@@ -68,14 +69,13 @@ export class RegisterComponent implements OnInit {
         const authResult = await this.authService.createNewUser(email, password);
         const user: User = {
           id: authResult.user?.uid,
-          nom: this.registerForm.get('fisrtName')?.value,
+          nom: this.registerForm.get('firstName')?.value,
           email: this.registerForm.get('email')?.value,
           createdAd: new Date(),
-          // role: 'client',
-          // photoURL: ''
+          role: 'client',
         };
-        await this.userService.newUser(user);
-        await authResult.user?.sendEmailVerification();
+         this.userService.newUser(user);
+        //  authResult.user?.sendEmailVerification();
         // Success message with sweetAlert 2
         const Toast = Swal.mixin({
           toast: true,
@@ -90,14 +90,15 @@ export class RegisterComponent implements OnInit {
         })
         Toast.fire({
           icon: 'success',
-          title: 'Account successfully registered'
+          title: 'Compte cré avec succès'
         })
-        this.openGmailAuto();
+        this.router.navigate(['acceuil']);
+        // this.openGmailAuto();
       } catch (error) {
         // Message error with sweetAlert 2
         const Toast = Swal.mixin({
           toast: true,
-          position: 'top-end',
+          position: 'top',
           showConfirmButton: false,
           timer: 3000,
           timerProgressBar: true,
@@ -108,9 +109,30 @@ export class RegisterComponent implements OnInit {
         })
         Toast.fire({
           icon: 'error',
-          title: 'Make sure you fill in the different fields correctly.'
+          title: 'Veillez renseigner correctement les differents s\'il vous plait'
         })
       }
+    } else if (
+      this.registerForm.get('username')?.invalid
+      || this.registerForm.get('email')?.invalid
+      || this.registerForm.get('password')?.invalid
+      || this.registerForm.get('confirmPassword')?.invalid
+    ) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      Toast.fire({
+        icon: 'error',
+        title: 'Veillez renseigner correctement tous les differents s\'il vous plait'
+      })
     }
   }
 

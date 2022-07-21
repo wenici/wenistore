@@ -1,0 +1,21 @@
+.span-box { 
+    background: #1d3557;
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+}
+
+.card {
+    cursor: pointer;
+    border-radius: 14px;
+    color: white;
+    padding: 0.6rem;
+    height: auto;
+    transition: .4s;
+}
+
+.card:hover {
+    box-shadow: #1450a573 0px 6px 15px;
+    transition: .4s;
+}

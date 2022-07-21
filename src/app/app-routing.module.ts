@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ProductsComponent } from './components/products/products.component';
+import { NoFoundPageComponent } from './no-found-page/no-found-page.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { DetailsProductComponent } from './components/details-product/details-product.component';
-import { NoFoundPageComponent } from './no-found-page/no-found-page.component';
+import { ShoppingCardComponent } from './components/shopping-card/shopping-card.component';
+import { ProductsComponent } from './components/products/products.component';
 
 import { LoginComponent } from './auth/login/login.component'
 import { RegisterComponent } from './auth/register/register.component';
@@ -14,7 +15,7 @@ import { RegisterComponent } from './auth/register/register.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/products',
+    redirectTo: 'acceuil',
     pathMatch: 'full'
   },
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
     component: CreateProductComponent,
   },
   {
-    path: 'details/:id',
+    path: 'product-details/:productId',
     component: DetailsProductComponent,
   },
   {
@@ -40,6 +41,14 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'shopping-card',
+    component: ShoppingCardComponent,
+  },
+  { 
+    path: 'acceuil',
+    loadChildren: () => import('./top/top.module').then(m => m.TopModule)
   },
   {
     path: '**',

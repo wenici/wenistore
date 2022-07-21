@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/models/product.model';
+import { ProductsService } from '../../shared/services/products.service';
+import { ShoppingCardService } from 'src/app/shared/services/shopping-card.service';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/shared/services/database/user.service';
+import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-details-product',
@@ -6,10 +14,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details-product.component.css']
 })
 export class DetailsProductComponent implements OnInit {
-
-  constructor() { }
+  
+  isMyProduct: boolean = false;
+  productIdRoute: string;
+  product: Observable<Product | undefined>;
+  user: Observable<User | undefined>;
+  userID: string;
+  quantity: number = 0;
+  userCollection: AngularFirestoreCollection<User>
+  
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductsService,
+    private shoppingCardService: ShoppingCardService,
+    private userService: UserService
+  ) {
+    const routeParams = this.route.snapshot.paramMap;
+    this.productIdRoute = String(routeParams.get('productId'));
+    this.product = this.productService.getDetailProduct(this.productIdRoute);
+  }
 
   ngOnInit(): void {
+    this.product = this.productService.getDetailProduct(this.productIdRoute);
   }
+
+  onAddToShoppingCart(product: Product, userID: string): void {
+    const qteProduct = (product.quantity += 1);
+    product.isMyProduct = true;
+    this.shoppingCardService.addToMyCart(product, userID, qteProduct)
+  }
+
+  onRemoveToShoppingCart(product: Product, userID: string): void {
+    const qteProduct = (product.quantity -= 1);
+    if (qteProduct == 0) {
+      product.isMyProduct = false;
+    } else product.isMyProduct = true;
+    this.shoppingCardService.addToMyCart(product, userID, qteProduct)
+  }
+
 
 }
