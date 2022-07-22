@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-no-found-page',
   templateUrl: './no-found-page.component.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoFoundPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService:Title) { }
 
-  ngOnInit(): void {
+  title = 'Weni Store - Page Non Trouvée';
+
+  ngOnInit() {
+    this.titleService.setTitle(this.title);
   }
 
 }

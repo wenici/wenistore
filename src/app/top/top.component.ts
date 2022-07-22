@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-top',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopComponent implements OnInit {
 
-  constructor() { }
+  title = 'Weni Store - Acceuil';
 
-  ngOnInit(): void {
+  constructor(private titleService:Title) { }
+
+  ngOnInit() {
+    this.titleService.setTitle(this.title);
   }
 
 }

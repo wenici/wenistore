@@ -6,6 +6,7 @@ import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { ShoppingCardService } from 'src/app/shared/services/shopping-card.service';
 import Swal from 'sweetalert2';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-shopping-card',
@@ -16,15 +17,17 @@ export class ShoppingCardComponent implements OnInit {
 
   shopping: Cart[];
   quantity: number;
-
+  title = 'Weni Store - Mon panier';
   constructor(
     private shopCartService: ShoppingCardService,
     public productService: ProductsService,
     private dbstore: AngularFirestore,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) { }
 
   ngOnInit() { 
+    this.titleService.setTitle(this.title);
     this.shopCartService.getItems().subscribe((res) => {
       this.shopping = res.map((e) => {
         return {

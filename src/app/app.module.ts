@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TopModule } from './top/top.module';
@@ -30,7 +30,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { NoFoundPageComponent } from './no-found-page/no-found-page.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -41,8 +41,8 @@ import { NoFoundPageComponent } from './no-found-page/no-found-page.component';
     ShoppingCardComponent,
     LoginComponent,
     RegisterComponent,
-    NoFoundPageComponent,
-  ],
+    NoFoundPageComponent
+   ],
   imports: [
     TopModule,
     FormsModule,
@@ -56,7 +56,7 @@ import { NoFoundPageComponent } from './no-found-page/no-found-page.component';
     AngularFireDatabaseModule,
     AngularFireStorageModule
   ],
-  providers: [ { provide: LOCALE_ID, useValue: 'fr', }],
+  providers: [ Title, { provide: LOCALE_ID, useValue: 'fr', }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

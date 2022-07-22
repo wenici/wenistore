@@ -7,6 +7,7 @@ import { ShoppingCardService } from 'src/app/shared/services/shopping-card.servi
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/shared/services/database/user.service';
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details-product',
@@ -22,12 +23,14 @@ export class DetailsProductComponent implements OnInit {
   userID: string;
   quantity: number = 0;
   userCollection: AngularFirestoreCollection<User>
-  
+  title = 'Weni Store - Détail de produit';
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
     private shoppingCardService: ShoppingCardService,
-    private userService: UserService
+    private userService: UserService,
+    private titleService: Title
   ) {
     const routeParams = this.route.snapshot.paramMap;
     this.productIdRoute = String(routeParams.get('productId'));
@@ -36,6 +39,7 @@ export class DetailsProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.product = this.productService.getDetailProduct(this.productIdRoute);
+    this.titleService.setTitle(this.title);
   }
 
   onAddToShoppingCart(product: Product, userID: string): void {

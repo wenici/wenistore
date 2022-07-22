@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./top-supermarche.component.css']
 })
 export class TopSupermarcheComponent implements OnInit {
-  products: Product[];
+  products!: Product[];
   
   constructor(
     public productService: ProductsService,

@@ -7,6 +7,7 @@ import { User } from '../../models/user.model';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -14,13 +15,14 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-
+  title = 'Weni Store - Inscription';
   isValidForm = false;
   isLoggedin: boolean = false;
   userData: any; 
 
   constructor(
     private router: Router,
+    private titleService: Title,
     private authService: AuthService,
     private afAuth: AngularFireAuth,
     private userService: UserService,
@@ -58,7 +60,7 @@ export class RegisterComponent implements OnInit {
 
   openGmailAuto = () => window.open('https://mail.google.com/', '_bank');
 
-  ngOnInit(): void {}
+  ngOnInit() {this.titleService.setTitle(this.title)}
 
   async onSubmit() {
     if (this.registerForm.valid) {

@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  title = 'Weni Store - Connexion';
   isValidForm = false;
   isLoggedin: boolean = false;
   constructor(
     public authService: AuthService,
     public afAuth: AngularFireAuth,
     private formBuilder: FormBuilder,
-    public router: Router
+    public router: Router,
+    private titleService: Title
   ) {}
 
   loginForm = this.formBuilder.group({
@@ -98,6 +100,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle(this.title);
   }
 
 }
