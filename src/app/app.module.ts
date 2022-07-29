@@ -9,7 +9,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
 
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
@@ -28,9 +28,14 @@ import { ProductsComponent } from './components/products/products.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NoFoundPageComponent } from './no-found-page/no-found-page.component';
+import { OthersComponent } from './others/others.component';
+
+import { defineLordIconElement } from 'lord-icon-element';
+import lottie from 'lottie-web';
+
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -41,7 +46,8 @@ import { NoFoundPageComponent } from './no-found-page/no-found-page.component';
     ShoppingCardComponent,
     LoginComponent,
     RegisterComponent,
-    NoFoundPageComponent
+    NoFoundPageComponent,
+      OthersComponent
    ],
   imports: [
     TopModule,
@@ -58,5 +64,10 @@ import { NoFoundPageComponent } from './no-found-page/no-found-page.component';
   ],
   providers: [ Title, { provide: LOCALE_ID, useValue: 'fr', }],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    defineLordIconElement(lottie.loadAnimation);
+  }
+}

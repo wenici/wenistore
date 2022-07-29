@@ -7,6 +7,7 @@ import { UserService } from 'src/app/shared/services/database/user.service';
 import { Observable } from 'rxjs';
 import * as uuid from 'uuid';
 import * as firebase from 'firebase/app';
+// register lottie and define custom element
 
 @Component({
   selector: 'app-header',

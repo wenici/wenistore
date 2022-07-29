@@ -37,7 +37,8 @@
         </div>
       </div>
         <div class="uk-inline" *ngIf="isAuthenticated()">
-          <span class="uk-label uk-label-success">En ligne</span>
+          <lord-icon src="https://cdn.lordicon.com/yvrjxxqj.json" trigger="loop" colors="primary:#47d9c7" state="loop" style="width:32px;height:32px"></lord-icon>
+          <!-- <span class="uk-label uk-label-success">En ligne</span> -->
           <button class="" type="button">
             <span class="uk-margin-small-right" uk-icon="user"></span>
             Bonjour, {{ (currentUserData | async)?.nom }}

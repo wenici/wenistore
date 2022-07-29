@@ -7,6 +7,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { DetailsProductComponent } from './components/details-product/details-product.component';
 import { ShoppingCardComponent } from './components/shopping-card/shopping-card.component';
 import { ProductsComponent } from './components/products/products.component';
+import { OthersComponent } from './others/others.component';
 
 import { LoginComponent } from './auth/login/login.component'
 import { RegisterComponent } from './auth/register/register.component';
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'shopping-card',
     component: ShoppingCardComponent,
+  },
+  {
+    path: 'others',
+    component: OthersComponent,
   },
   { 
     path: 'acceuil',
