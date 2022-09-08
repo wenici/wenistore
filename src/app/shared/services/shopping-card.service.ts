@@ -40,14 +40,6 @@ export class ShoppingCardService {
     userShoppingProduct.doc(product.id).set(product);
   }
 
-  addFavorite(userID: string, product: Product, qteProduct: number): void {
-    const productDoc = this.productsCollection.doc(product.id);
-    productDoc.update({ quantity: qteProduct });
-    const userDoc = this.dbstore.doc(`products/${userID}`);
-    const isMyFavoris = userDoc.collection('shopping');
-    isMyFavoris.doc(product.id).set(product);
-  }
-
   removeToMyCart(product: Product, userID: string, qteProduct: number): void {
     const productDoc = this.productsCollection.doc(product.id);
     productDoc.update({ quantity: qteProduct });

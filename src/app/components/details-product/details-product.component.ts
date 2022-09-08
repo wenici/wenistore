@@ -42,26 +42,19 @@ export class DetailsProductComponent implements OnInit {
   }
 
 
-  // add(product: Product, userID: string): void {
-  //   const qteProduct = (product.quantity += 1);
-  //   product.isMyProduct = true;
-  //   this.shoppingCardService.addFavorite(product.id, userID, qteProduct)
-
-  // }
-
   onAddToShoppingCart(product: Product, userID: string): void {
     const qteProduct = (product.quantity += 1);
     product.isMyProduct = true;
     this.shoppingCardService.addToMyCart(product, userID, qteProduct)
   }
 
-  // onRemoveToShoppingCart(product: Product, userID: string): void {
-  //   const qteProduct = (product.quantity -= 1);
-  //   if (qteProduct == 0) {
-  //     product.isMyProduct = false;
-  //   } else product.isMyProduct = true;
-  //   this.shoppingCardService.addToMyCart(product, userID, qteProduct)
-  // }
+  onRemoveToShoppingCart(product: Product, userID: string): void {
+    const qteProduct = (product.quantity -= 1);
+    if (qteProduct == 0) {
+      product.isMyProduct = false;
+    } else product.isMyProduct = true;
+    this.shoppingCardService.addToMyCart(product, userID, qteProduct)
+  }
 
 
 }
