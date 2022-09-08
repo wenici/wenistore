@@ -12,6 +12,9 @@ import { OthersComponent } from './others/others.component';
 import { LoginComponent } from './auth/login/login.component'
 import { RegisterComponent } from './auth/register/register.component';
 
+import { AdminComponent } from './admin/admin.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { AllProductsComponent } from './admin/all-products/all-products.component';
 
 const routes: Routes = [
   {
@@ -22,6 +25,20 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      {
+        path: 'users',
+        component: AllUsersComponent
+      },
+      {
+        path: 'allproducts',
+        component: AllProductsComponent
+      }
+    ]
   },
   {
     path: 'create',

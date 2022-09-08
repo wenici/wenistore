@@ -84,3 +84,15 @@
 .uk-button:active {
   background: #046065;
 }
+
+.addCart {
+  font-weight: bold !important;
+  border-radius: 5px;
+  background: #15253e;
+  opacity: 0;
+  width: 100%;
+}
+
+.addCart:active {
+  background: #d7d9de93;
+}

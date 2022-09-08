@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private authService: AuthService,
-    private afAuth: AngularFireAuth,
     private userService: UserService,
     private formBuilder: FormBuilder,
     private pswValid: PasswordValidationService,

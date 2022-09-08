@@ -34,6 +34,9 @@ export class UserService {
 
   getUser = (userID?: string) => this.userCollection.doc(userID).valueChanges();
 
+  getAllUsers() {
+    return this.dbstore.collection('users').snapshotChanges();
+  }
   // Produit du panier initial de l'utilisateur
   getInitialShoppingCart(userid: string): Observable<DocumentData[]> {
     const userDoc = this.userCollection.doc(userid);
@@ -57,10 +60,9 @@ export class UserService {
     return userDoc.collection('shopping').doc(product.id).set(product);
   }
 
-  // supprimer un produit du panier
-  deleteToCart(userID: string, product: Product): Promise<void> {
-    const userDoc = this.userCollection.doc(userID);
-    return userDoc.collection('shopping').doc(product.id).delete();
+  // supprimer un utilisateur du panier
+  removeUser(user: User): Promise<void> {
+    return this.dbstore.collection('shopping').doc(user.id).delete();
   }
 
 }

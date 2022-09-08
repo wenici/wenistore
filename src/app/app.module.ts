@@ -2,6 +2,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TopModule } from './top/top.module';
+
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -32,7 +33,12 @@ import { OthersComponent } from './others/others.component';
 
 import { defineLordIconElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
+import { AuthService } from './shared/services/auth/auth.service';
 
+
+import { AdminComponent } from './admin/admin.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { AllProductsComponent } from './admin/all-products/all-products.component';
 
 @NgModule({
   declarations: [		
@@ -47,7 +53,10 @@ import lottie from 'lottie-web';
     LoginComponent,
     RegisterComponent,
     NoFoundPageComponent,
-      OthersComponent
+    OthersComponent,
+    AllUsersComponent,
+    AllProductsComponent,
+    AdminComponent
    ],
   imports: [
     TopModule,
@@ -62,7 +71,7 @@ import lottie from 'lottie-web';
     AngularFireDatabaseModule,
     AngularFireStorageModule
   ],
-  providers: [ Title, { provide: LOCALE_ID, useValue: 'fr', }],
+  providers: [ Title, { provide: LOCALE_ID, useValue: 'fr', }, AuthService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

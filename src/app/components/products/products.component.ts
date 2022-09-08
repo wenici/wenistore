@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class ProductsComponent implements OnInit {
 
-  products: Product[] = new Array;
+  products: Product[];
   userID: string;
   quantity: number = 0;
 
@@ -41,7 +41,22 @@ export class ProductsComponent implements OnInit {
   onAddToShoppingCart(product: Product, userID: string): void {
     const qteProduct = (product.quantity += 1);
     product.isMyProduct = true;
-    this.shopCartService.addToMyCart(product, userID, qteProduct)
+    this.shopCartService.addToMyCart(product, userID, qteProduct);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      timer: 800,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    Toast.fire({
+      icon: 'success',
+      title: product.name + ' ajouté au panier'
+    })
   }
   
 }

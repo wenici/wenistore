@@ -59,26 +59,22 @@
               />
             </div>
 
-            <button type="submit" class="sign-btn">Connexion</button>
+            <button type="submit" class="sign-btn">
+              <span *ngIf="!isValidForm">Connexion</span>
+              <lord-icon *ngIf="isValidForm"
+                  src="https://cdn.lordicon.com/mwqnntww.json"
+                  trigger="loop"
+                  colors="primary:#FFFFFF"
+                  state="loop"
+                  style="width:30px;height:30px">
+              </lord-icon>
+            </button>
 
             <p class="text">
               Mot de passe oublié ?
               <a href="#">Besoin d'aide ?</a>
             </p>
           </div>
-          <!-- <div class="box-or">
-                      <div class="or">
-                          <div class="line-or"></div>
-                          <div class="line-or-line"></div>
-                          <div class="or-line"></div>
-                      </div>
-                      <div class="sociaux">
-                          <div class="icon gmail" (click)="authService.GoogleAuth()">
-                              <img src="assets/img/icons8-google.svg" alt="">
-                              <span>Gmail</span>
-                          </div>
-                      </div>
-                  </div> -->
         </form>
       </div>
 

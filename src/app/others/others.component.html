@@ -27,36 +27,7 @@
        </button>
      </div>
     </form>
-<!-- This is the modal -->
-  <!-- <div id="modal-example" uk-modal>
-      <div class="uk-modal-dialog uk-modal-body" *ngIf="editState && intemToEdit.id">
-        <form (ngSubmit)="updateUnite" novalidate>
-          <h2 class="uk-modal-title">Modification</h2>
-          <div class="uk-margin uk">
-            <label class="uk-form-label" for="form-stacked-text">Nom du livreur</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" [(ngModel)]="unites.name" type="text" placeholder="Nom du libreur" formControlName="name">
-            </div>
-          </div>
-          <div class="uk-margin uk">
-            <label class="uk-form-label" for="form-stacked-text">Numero du livreur</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" [(ngModel)]="unites.numero" type="text" placeholder="Numéro du libreur" formControlName="numero">
-            </div>
-          </div>
-          <div class="uk-margin uk">
-              <label class="uk-form-label" for="form-stacked-text">Monant rechargé</label>
-              <div class="uk-form-controls">
-                  <input class="uk-input" [(ngModel)]="unites.price" type="number" placeholder="Monant dépensé" formControlName="price">
-              </div>
-          </div>
-          <p class="uk-text-right">
-            <button class="uk-button background" type="button">Valider</button>
-          </p>
-        </form>
-      </div>
-  </div> -->
- </div>
+</div>
   <div class="uk-card nbre  uk-card-default uk-card-body uk-margin-top">
     <div *ngIf=" unites">
       <!-- <p class="uk-flex uk-flex-center">
@@ -65,7 +36,7 @@
       </p> -->
       <p class="uk-flex uk-flex-center">
         <span class="phrase">Montant dépensé: </span>
-        <span class="Nombre"> {{ (unites.length  * 2000) - 6000 | currency: 'XOF' }}</span>
+        <span class="Nombre"> {{ (unites.length  * 2000)  | currency: 'XOF' }}</span>
       </p>
    </div>
   </div>
