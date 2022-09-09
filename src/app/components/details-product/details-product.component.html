@@ -480,15 +480,15 @@
       <div>
         <div class="uk-dark uk-padding">
               <h3> {{ (product | async)?.name }}</h3>
-              <span>{{ (user | async)?.nom }}</span><hr class="uk-divider-icon">
+              <hr class="uk-divider-icon">
             <div class="uk-flex prix">
               <p class="uk-text">
                 <span>{{ (product | async)?.price | currency: 'XOF' }} </span>
               </p>
             </div>
             <hr class="uk-divider-icon">
-            <!-- <button class="uk-button uk-button-default uk-width-1-1"> -->
-              <button class="uk-button uk-button-default uk-width-1-1" (click)="onAddToShoppingCart(product , userID)">
+            <button class="uk-button uk-button-default uk-width-1-1">
+              <!-- <button class="uk-button uk-button-default uk-width-1-1" (click)="onAddToShoppingCart(product , userID)"> -->
               AJOUTER AU PANIER
             </button>
           </div>

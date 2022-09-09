@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 export class AuthService {
 
   userData: any; 
+  useR$: any;
 
   constructor(
     private afAuth: AngularFireAuth,

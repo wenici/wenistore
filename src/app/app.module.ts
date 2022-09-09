@@ -21,7 +21,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 
-import { CreateProductComponent } from './components/create-product/create-product.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { DetailsProductComponent } from './components/details-product/details-product.component';
 import { ShoppingCardComponent } from './components/shopping-card/shopping-card.component';
@@ -45,7 +44,6 @@ import { AllProductsComponent } from './admin/all-products/all-products.componen
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CreateProductComponent,
     UpdateProductComponent,
     DetailsProductComponent,
     ProductsComponent,

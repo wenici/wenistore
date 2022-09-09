@@ -29,7 +29,6 @@ export class OthersComponent implements OnInit {
       name: ['', Validators.required],
       price: ['', Validators.required],
       numero: ['', Validators.required],
-      createdAt: Date.now() * 1000,
     });
   }
 
@@ -120,11 +119,6 @@ export class OthersComponent implements OnInit {
       icon: 'success',
       title: 'Enregistrement supprimé avec succès',
     });
-  }
-
-  editUnite(event, unite){
-    this.editState = true;
-    this.intemToEdit = unite;
   }
 
   updateUnite(unite: Data) : void {

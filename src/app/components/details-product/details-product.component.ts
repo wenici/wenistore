@@ -1,13 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+
 import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user.model';
 import { Product } from 'src/app/models/product.model';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { ProductsService } from '../../shared/services/products.service';
 import { ShoppingCardService } from 'src/app/shared/services/shopping-card.service';
-import { User } from 'src/app/models/user.model';
-import { UserService } from 'src/app/shared/services/database/user.service';
-import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Title } from '@angular/platform-browser';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-details-product',
@@ -19,7 +20,6 @@ export class DetailsProductComponent implements OnInit {
   isMyProduct: boolean = false;
   productIdRoute: string;
   product: Observable<Product>;
-  user: Observable<User | undefined>;
   userID: string;
   quantity: number = 0;
   userCollection: AngularFirestoreCollection<User>
@@ -41,8 +41,8 @@ export class DetailsProductComponent implements OnInit {
     this.titleService.setTitle(this.title);
   }
 
-
   onAddToShoppingCart(product: Product, userID: string): void {
+    const productDetails = this.productService.getDetailProduct(this.productIdRoute);
     const qteProduct = (product.quantity += 1);
     product.isMyProduct = true;
     this.shoppingCardService.addToMyCart(product, userID, qteProduct)

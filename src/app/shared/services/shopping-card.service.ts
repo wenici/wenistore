@@ -15,7 +15,7 @@ export class ShoppingCardService {
  
   productsCollection: AngularFirestoreCollection<Product>;
   userCollection: AngularFirestoreCollection<User>;
-  
+
   constructor(private readonly dbstore: AngularFirestore) {
     this.productsCollection = this.dbstore.collection('products');
     this.userCollection = this.dbstore.collection('users');
@@ -33,7 +33,7 @@ export class ShoppingCardService {
   }
 
   addToMyCart(product: Product, userID: string, qteProduct: number): void {
-    const productDoc = this.productsCollection.doc(product.id);
+    const productDoc = this.dbstore.doc(`products/${product.id}`);
     productDoc.update({ quantity: qteProduct });
     const userDoc = this.dbstore.doc(`products/${userID}`);
     const userShoppingProduct = userDoc.collection('shopping');
