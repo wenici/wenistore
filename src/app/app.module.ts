@@ -5,11 +5,11 @@ import { TopModule } from './top/top.module';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
-
 import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -28,16 +28,13 @@ import { ProductsComponent } from './components/products/products.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NoFoundPageComponent } from './no-found-page/no-found-page.component';
-import { OthersComponent } from './others/others.component';
 
 import { defineLordIconElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
 import { AuthService } from './shared/services/auth/auth.service';
 
-
-import { AdminComponent } from './admin/admin.component';
-import { AllUsersComponent } from './admin/all-users/all-users.component';
-import { AllProductsComponent } from './admin/all-products/all-products.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './layouts/material.module';
 
 @NgModule({
   declarations: [		
@@ -51,20 +48,22 @@ import { AllProductsComponent } from './admin/all-products/all-products.componen
     LoginComponent,
     RegisterComponent,
     NoFoundPageComponent,
-    OthersComponent,
-    AllUsersComponent,
-    AllProductsComponent,
-    AdminComponent
    ],
+   entryComponents: [
+    LoginComponent
+  ],
   imports: [
     TopModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     BrowserModule,
+    FlexLayoutModule,
+    MaterialModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireAuthGuardModule,
     AngularFirestoreModule.enablePersistence(),
     AngularFireDatabaseModule,
     AngularFireStorageModule

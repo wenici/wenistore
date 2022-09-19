@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 
@@ -10,7 +11,7 @@ export class ProductsService {
 
     productCollection: AngularFirestoreCollection<Product>;
     
-    constructor(private dbstore: AngularFirestore) {
+    constructor(private dbstore: AngularFirestore, private router: Router) {
       this.productCollection = this.dbstore.collection('products', (ref) => 
         ref.orderBy('name', 'desc')
       );
@@ -22,8 +23,12 @@ export class ProductsService {
       return this.dbstore.collection('products').snapshotChanges();
     }
 
-    getDetailProduct(productId: string): Observable<Product | undefined> {
+    getDetailProduct(productId: string): Observable<any> {
       return this.productCollection.doc(productId).valueChanges();
     }
+    goToDetailsProduct(productId?: string): void {
+      this.router.navigate(['product-details', productId]);
+      console.log(productId);
+        }
 
 }

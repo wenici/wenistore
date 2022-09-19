@@ -20,6 +20,7 @@ export class DetailsProductComponent implements OnInit {
   isMyProduct: boolean = false;
   productIdRoute: string;
   product: Observable<Product>;
+  deProd: string[] = [];
   userID: string;
   quantity: number = 0;
   userCollection: AngularFirestoreCollection<User>
@@ -40,6 +41,10 @@ export class DetailsProductComponent implements OnInit {
     this.product = this.productService.getDetailProduct(this.productIdRoute);
     this.titleService.setTitle(this.title);
   }
+
+  // getIdprod(productId: string) {
+  //   console.log(productId);
+  // }
 
   onAddToShoppingCart(product: Product, userID: string): void {
     const productDetails = this.productService.getDetailProduct(this.productIdRoute);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../shared/services/database/user.service';
 import { PasswordValidationService } from './../../shared/services/password-validation.service';
-import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { User } from '../../models/user.model';
 import Swal from 'sweetalert2';
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     private titleService: Title,
     private authService: AuthService,
     private userService: UserService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private pswValid: PasswordValidationService,
   ) {}
 

@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, Validators } from '@angular/forms';
 
 import Swal from 'sweetalert2';
 import { Title } from '@angular/platform-browser';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public afAuth: AngularFireAuth,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     public router: Router,
     private titleService: Title
   ) {}

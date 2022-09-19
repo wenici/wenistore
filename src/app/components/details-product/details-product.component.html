@@ -468,7 +468,7 @@
     <div id="modal-center" class="uk-flex-top" uk-modal>
       <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
           <button class="uk-modal-close-default" type="button" uk-close></button>
-          <img [src]="(product | async)?.imageURL" class="nav-left" alt="">
+          <img [src]="(product | async)?.imageURL" class="nav-left">
       </div>
     </div>
     <div class="uk-child-width-1-2@s" uk-grid>
@@ -479,19 +479,19 @@
       </div>
       <div>
         <div class="uk-dark uk-padding">
-              <h3> {{ (product | async)?.name }}</h3>
-              <hr class="uk-divider-icon">
-            <div class="uk-flex prix">
-              <p class="uk-text">
-                <span>{{ (product | async)?.price | currency: 'XOF' }} </span>
-              </p>
-            </div>
-            <hr class="uk-divider-icon">
-            <button class="uk-button uk-button-default uk-width-1-1">
-              <!-- <button class="uk-button uk-button-default uk-width-1-1" (click)="onAddToShoppingCart(product , userID)"> -->
-              AJOUTER AU PANIER
-            </button>
+          <h3> {{ (product | async)?.name }}</h3>
+          <hr class="uk-divider-icon">
+          <div class="uk-flex prix">
+            <p class="uk-text">
+              <span>{{ (product | async)?.price | currency: 'XOF' }} </span>
+            </p>
           </div>
+          <hr class="uk-divider-icon">
+          <button class="uk-button uk-button-default uk-width-1-1">
+            <!-- <button class="uk-button uk-button-default uk-width-1-1" (click)="onAddToShoppingCart(product , userID)"> -->
+            AJOUTER AU PANIER
+          </button>
+        </div>
       </div>
     </div>
   </div>

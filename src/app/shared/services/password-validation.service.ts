@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ export class PasswordValidationService {
   constructor() {}
 
   passwordMatchValidator(password: string, confirmPassword: string) {
-    return (formGroup: FormGroup) => {
+    return (formGroup: UntypedFormGroup) => {
       const passwordControl = formGroup.controls[password];
       const confirmPasswordControl = formGroup.controls[confirmPassword];
       if (!passwordControl || !confirmPasswordControl) {
