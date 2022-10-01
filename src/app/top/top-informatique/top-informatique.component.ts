@@ -11,11 +11,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./top-informatique.component.css']
 })
 export class TopInformatiqueComponent implements OnInit {
+
   products: Product[];
+  userID: string;
   
   constructor(
     public productService: ProductsService,
-    public shopCartService: ShoppingCardService,
+    public shoppingCardService: ShoppingCardService,
     public router: Router
   ) { }
 
@@ -32,5 +34,26 @@ export class TopInformatiqueComponent implements OnInit {
   goToDetailsProduct(productId?: string): void {
     this.router.navigate(['product-details', productId]);
     console.log(productId);
+  }
+
+  onAddToShoppingCart(product: Product, userID: string): void {
+    const qteProduct = (product.quantity += 1);
+    product.isMyProduct = true;
+    this.shoppingCardService.addToMyCart(product, userID, qteProduct);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    Toast.fire({
+      icon: 'success',
+      title: 'Produit ajouté au panier avec succès'
+    })
   }
 }

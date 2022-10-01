@@ -12,10 +12,10 @@ import Swal from 'sweetalert2';
 })
 export class TopSoinBeauteComponent implements OnInit {
   products: Product[];
-  
+  userID: string;
   constructor(
     public productService: ProductsService,
-    public shopCartService: ShoppingCardService,
+    public shoppingCardService: ShoppingCardService,
     public router: Router
   ) { }
 
@@ -33,4 +33,10 @@ export class TopSoinBeauteComponent implements OnInit {
     this.router.navigate(['product-details', productId]);
     console.log(productId);
   }
+  onAddToShoppingCart(product: Product, userID: string): void {
+    const qteProduct = (product.quantity += 1);
+    product.isMyProduct = true;
+    this.shoppingCardService.addToMyCart(product, userID, qteProduct)
+  }
+  
 }

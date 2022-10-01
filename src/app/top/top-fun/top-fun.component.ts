@@ -11,11 +11,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./top-fun.component.css']
 })
 export class TopFunComponent implements OnInit {
+
   products: Product[];
   userID: string;
+
   constructor(
     public productService: ProductsService,
-    public shopCartService: ShoppingCardService,
+    public shoppingCardService: ShoppingCardService,
     public router: Router
   ) { }
 
@@ -29,6 +31,7 @@ export class TopFunComponent implements OnInit {
       });
     });
   }
+
   goToDetailsProduct(productId?: string): void {
     this.router.navigate(['product-details', productId]);
     console.log(productId);
@@ -37,7 +40,30 @@ export class TopFunComponent implements OnInit {
   onAddToShoppingCart(product: Product, userID: string): void {
     const qteProduct = (product.quantity += 1);
     product.isMyProduct = true;
-    this.shopCartService.addToMyCart(product, userID, qteProduct)
+    this.shoppingCardService.addToMyCart(product, userID, qteProduct);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    Toast.fire({
+      icon: 'success',
+      title: 'Produit ajouté au panier avec succès'
+    })
+  }
+
+  onRemoveToShoppingCart(product: Product, userID: string): void {
+    const qteProduct = (product.quantity -= 1);
+    if (qteProduct == 0) {
+      product.isMyProduct = false;
+    } else product.isMyProduct = true;
+    this.shoppingCardService.removeToMyCart(product, userID, qteProduct)
   }
   
 }

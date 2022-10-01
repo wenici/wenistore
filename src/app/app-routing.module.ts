@@ -3,9 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NoFoundPageComponent } from './no-found-page/no-found-page.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
-import { DetailsProductComponent } from './components/details-product/details-product.component';
-import { ShoppingCardComponent } from './components/shopping-card/shopping-card.component';
 import { ProductsComponent } from './components/products/products.component';
+import { DetailsProductComponent } from './components/details-product/details-product.component';
+
+import { ShopComponent } from './components/shop/shop.component';
+import { DeliveryComponent } from './components/shop/checkout/delivery/delivery.component';
+import { PaymentComponent } from './components/shop/checkout/payment/payment.component';
+import { CheckoutComponent } from './components/shop/checkout/checkout.component';
+import { OrdersComponent } from './components/shop/orders/orders.component';
 
 import { LoginComponent } from './auth/login/login.component'
 import { RegisterComponent } from './auth/register/register.component';
@@ -37,8 +42,16 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'shopping-card',
-    component: ShoppingCardComponent,
+    path: 'shop',
+    component: ShopComponent,
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent
   },
   { 
     path: 'acceuil',

@@ -21,6 +21,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatRadioModule} from '@angular/material/radio'; 
 import { NgModule } from '@angular/core';
 
 const materials = [
@@ -47,6 +48,7 @@ const materials = [
   MatGridListModule,
   MatMenuModule,
   MatSlideToggleModule,
+  MatRadioModule
 ];
 
 @NgModule({

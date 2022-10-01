@@ -1,21 +1,29 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Product } from 'src/app/models/product.model';
 import "firebase/auth";
+
 import { User } from 'src/app/models/user.model';
+import { Product } from 'src/app/models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCardService {
- 
+
   productsCollection: AngularFirestoreCollection<Product>;
   userCollection: AngularFirestoreCollection<User>;
 
   constructor(private readonly dbstore: AngularFirestore) {
     this.productsCollection = this.dbstore.collection('products');
     this.userCollection = this.dbstore.collection('users');
+  }
+
+  AddCart(product: Product, userID: string, qteProduct: number): Promise<void>  {
+    const productDoc = this.dbstore.doc(product.id);
+    productDoc.update({ quantity: qteProduct });
+    const userDoc = this.userCollection.doc(userID);
+    const userShoppingProduct = userDoc.collection('shopping');
+    return userShoppingProduct.doc(product.id).set(product);
   }
 
   getItems() {
@@ -29,20 +37,20 @@ export class ShoppingCardService {
     product.isMyProduct = shopCartPrtDoc.exists;
   }
 
-  addToMyCart(product: Product, userID: string, qteProduct: number): void {
-    const productDoc = this.dbstore.doc(`products/${product.id}`);
+  addToMyCart(product: Product, userID: string, qteProduct: number): Promise<void> {
+    const productDoc = this.dbstore.doc(product.id);
     productDoc.update({ quantity: qteProduct });
-    const userDoc = this.dbstore.doc(`products/${userID}`);
+    const userDoc = this.userCollection.doc(userID);
     const userShoppingProduct = userDoc.collection('shopping');
-    userShoppingProduct.doc(product.id).set(product);
+    return userShoppingProduct.doc(product.id).set(product);
   }
 
-  removeToMyCart(product: Product, userID: string, qteProduct: number): void {
+  removeToMyCart(product: Product, userID: string, qteProduct: number): Promise<void> {
     const productDoc = this.productsCollection.doc(product.id);
     productDoc.update({ quantity: qteProduct });
     const userDoc = this.userCollection.doc(userID);
     const userShoppingProduct = userDoc.collection('shopping');
-    userShoppingProduct.doc(product.id).delete();
+    return userShoppingProduct.doc(product.id).delete();
   }
 
   async getProductsUser(userID: string): Promise<Product[]> {

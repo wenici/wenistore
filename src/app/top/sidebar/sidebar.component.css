@@ -36,3 +36,12 @@ a
   box-shadow: #1450a573 0px 6px 15px;
   transition: .4s;
 }
+
+
+.uk-image {
+  transition: transform .2s;
+}
+
+.uk-image:hover {
+  transform: scale(0.9);
+}

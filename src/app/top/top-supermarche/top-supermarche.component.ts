@@ -10,11 +10,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./top-supermarche.component.css']
 })
 export class TopSupermarcheComponent implements OnInit {
-  products!: Product[];
-  
+  products: Product[];
+  userID: string;
   constructor(
     public productService: ProductsService,
-    public shopCartService: ShoppingCardService,
+    public shoppingCardService: ShoppingCardService,
     public router: Router
   ) { }
 
@@ -31,6 +31,12 @@ export class TopSupermarcheComponent implements OnInit {
   goToDetailsProduct(productId?: string): void {
     this.router.navigate(['product-details', productId]);
     console.log(productId);
+  }
+
+  onAddToShoppingCart(product: Product, userID: string): void {
+    const qteProduct = (product.quantity += 1);
+    product.isMyProduct = true;
+    this.shoppingCardService.addToMyCart(product, userID, qteProduct)
   }
 
 }

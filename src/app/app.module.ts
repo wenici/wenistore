@@ -23,7 +23,6 @@ import { FooterComponent } from './layouts/footer/footer.component';
 
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { DetailsProductComponent } from './components/details-product/details-product.component';
-import { ShoppingCardComponent } from './components/shopping-card/shopping-card.component';
 import { ProductsComponent } from './components/products/products.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -35,6 +34,11 @@ import { AuthService } from './shared/services/auth/auth.service';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './layouts/material.module';
+import { ShopComponent } from './components/shop/shop.component';
+import { DeliveryComponent } from './components/shop/checkout/delivery/delivery.component';
+import { PaymentComponent } from './components/shop/checkout/payment/payment.component';
+import { CheckoutComponent } from './components/shop/checkout/checkout.component';
+import { OrdersComponent } from './components/shop/orders/orders.component';
 
 @NgModule({
   declarations: [		
@@ -44,10 +48,14 @@ import { MaterialModule } from './layouts/material.module';
     UpdateProductComponent,
     DetailsProductComponent,
     ProductsComponent,
-    ShoppingCardComponent,
     LoginComponent,
     RegisterComponent,
     NoFoundPageComponent,
+    ShopComponent,
+    DeliveryComponent,
+    PaymentComponent,
+    CheckoutComponent,
+    OrdersComponent,
    ],
    entryComponents: [
     LoginComponent

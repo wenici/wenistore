@@ -2,7 +2,7 @@
 <div class="uk-container">
     <div class="pages-vetements uk-margin-top uk-margin-bottom">
       <div class="cards">
-        <div class="card card-shopping" *ngFor="let product of products | slice:1:7">
+        <div class="card card-shopping" *ngFor="let product of products | slice:0:6">
           <img  [src]="product.imageURL[0]" alt="" (click)="goToDetailsProduct(product.id)">
             <div class="description"> 
               <div class="prix-stars">
@@ -10,6 +10,9 @@
                   <span class="prix">{{ (product.price) | currency: 'XOF' }}</span>
               </div>
             </div>
+            <button class="uk-button uk-button-small" (click)="onAddToShoppingCart(product, userID)">
+              Ajouter le produit
+            </button>
         </div>
       </div>
     </div>
