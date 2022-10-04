@@ -79,6 +79,15 @@
   background: #01b3bb;
   color: #ffffff;
   border-radius: 3px;
+  display: flex;
+  width: 25rem;
+  justify-content: center;
+  align-items: center
+}
+
+.uk-button .bx {
+  margin-right: 1rem;
+  font-size: 1.5rem !important;
 }
 
 .uk-button:active {

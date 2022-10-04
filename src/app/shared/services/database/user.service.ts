@@ -32,18 +32,21 @@ export class UserService {
     return userDoc.set(user);
   }
 
-  getUser = (userID?: string) => this.userCollection.doc(userID).valueChanges();
+  // getUser = (userID?: string) => this.userCollection.doc(userID).valueChanges();
+  getUser(userID: string) {
+    const userCollect = this.userCollection = this.dbstore.collection('users');
+    userCollect.doc(userID).valueChanges();
+  }
 
   getAllUsers() {
     return this.dbstore.collection('users').snapshotChanges();
   }
-  // Produit du panier initial de l'utilisateur
+
   getInitialShoppingCart(userid: string): Observable<DocumentData[]> {
     const userDoc = this.userCollection.doc(userid);
     return userDoc.collection('shopping').valueChanges();
   }
 
-  // Tous les produits ajouté au panier de l'utilisateur courrement connnecté
   async getShoppingCartProducts(userid: string): Promise<Product[]> {
     const userDoc = this.dbstore.firestore.collection('users').doc(userid);
     const shopping = await userDoc.collection('shopping').get();
@@ -52,17 +55,6 @@ export class UserService {
       const id = doc.id;
       return { id, ...data };
     });
-  }
-
-  // ajouter un produit au panier
-  setTocart(userID: string, product: Product): Promise<void> {
-    const userDoc = this.userCollection.doc(userID);
-    return userDoc.collection('shopping').doc(product.id).set(product);
-  }
-
-  // supprimer un utilisateur du panier
-  removeUser(user: User): Promise<void> {
-    return this.dbstore.collection('shopping').doc(user.id).delete();
   }
 
 }

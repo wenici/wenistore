@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
+import * as firebase from 'firebase/compat/app';
+type UserCredential = Promise<firebase.default.auth.UserCredential>;
 
 @Injectable({
   providedIn: 'root',
@@ -28,11 +29,11 @@ export class AuthService {
     });
   }
 
-  createNewUser(email: string, password: string) {
+  createNewUser(email: string, password: string): UserCredential {
     return this.afAuth.createUserWithEmailAndPassword(email, password);
   }
 
-  loginUser(email: string, password: string) {
+  loginUser(email: string, password: string): UserCredential {
     return this.afAuth.signInWithEmailAndPassword(email, password);
   }
 

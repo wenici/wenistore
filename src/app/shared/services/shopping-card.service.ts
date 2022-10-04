@@ -18,14 +18,6 @@ export class ShoppingCardService {
     this.userCollection = this.dbstore.collection('users');
   }
 
-  AddCart(product: Product, userID: string, qteProduct: number): Promise<void>  {
-    const productDoc = this.dbstore.doc(product.id);
-    productDoc.update({ quantity: qteProduct });
-    const userDoc = this.userCollection.doc(userID);
-    const userShoppingProduct = userDoc.collection('shopping');
-    return userShoppingProduct.doc(product.id).set(product);
-  }
-
   getItems() {
     return this.dbstore.collection('shopping').snapshotChanges();
   }

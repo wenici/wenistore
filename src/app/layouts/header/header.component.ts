@@ -18,20 +18,22 @@ uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
 })
 export class HeaderComponent implements OnInit {
   
- userID: '';
- currentUserData?: Observable<User | undefined>;
+
+  userID = '';
+  currentUserData?: User | undefined;
+  userData: User | null;
   constructor(
-    public authService: AuthService,
+    private userService: UserService,
+    private router: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
-  ngOnInit(): void {
-    // this.userID = this.route.snapshot.data['user'].id;
-    // this.currentUserData = this.userService.getUser(this.userID);
-  }
+  ngOnInit() {
+    
+   this.userService.getUser(this.userID);
 
+  }
   logout = () => this.authService.logout();
 
   isAuthenticated = () => this.authService.isLoggedin();
-
-
 }

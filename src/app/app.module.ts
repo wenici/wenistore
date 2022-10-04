@@ -39,6 +39,7 @@ import { DeliveryComponent } from './components/shop/checkout/delivery/delivery.
 import { PaymentComponent } from './components/shop/checkout/payment/payment.component';
 import { CheckoutComponent } from './components/shop/checkout/checkout.component';
 import { OrdersComponent } from './components/shop/orders/orders.component';
+import { UserProfilImgComponent } from './auth/user-profil-img/user-profil-img.component';
 
 @NgModule({
   declarations: [		
@@ -56,6 +57,7 @@ import { OrdersComponent } from './components/shop/orders/orders.component';
     PaymentComponent,
     CheckoutComponent,
     OrdersComponent,
+    UserProfilImgComponent,
    ],
    entryComponents: [
     LoginComponent

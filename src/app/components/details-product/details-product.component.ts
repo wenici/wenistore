@@ -46,10 +46,23 @@ export class DetailsProductComponent implements OnInit {
     console.log(route);
   }
 
+  saveCartLocation(): void {
+    localStorage.setItem('cartSaved', JSON.stringify(this.product));
+  }
+
+  removeCartLocation(product: Product): void {
+    localStorage.removeItem(product.id);
+  }
+
+  deleteAllCartLocation(): void {
+    localStorage.clear();
+  }
+
   onAddToShoppingCart(product: Product, userID: string): void {
     const qteProduct = (product.quantity += 1);
     product.isMyProduct = true;
-    this.shoppingCardService.addToMyCart(product, userID, qteProduct)
+    this.shoppingCardService.addToMyCart(product, userID, qteProduct);
+    this.saveCartLocation();
   }
 
   onRemoveToShoppingCart(product: Product, userID: string): void {
@@ -58,6 +71,17 @@ export class DetailsProductComponent implements OnInit {
       product.isMyProduct = false;
     } else product.isMyProduct = true;
     this.shoppingCardService.removeToMyCart(product, userID, qteProduct)
+    this.removeCartLocation(product);
   }
+
+  onRemoveAllToShoppingCart(product: Product, userID: string): void {
+    const qteProduct = (product.quantity -= 1);
+    if (qteProduct == 0) {
+      product.isMyProduct = false;
+    } else product.isMyProduct = true;
+    this.shoppingCardService.removeToMyCart(product, userID, qteProduct)
+    this.removeCartLocation(product);
+  }
+
 
 }

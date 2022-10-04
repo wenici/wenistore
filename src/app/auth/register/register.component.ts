@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../shared/services/database/user.service';
-import { PasswordValidationService } from './../../shared/services/password-validation.service';
+import { PasswordValidationService } from '../../shared/services/auth/password-validation.service';
 import { AbstractControl, UntypedFormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { User } from '../../models/user.model';
