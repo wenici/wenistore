@@ -19,7 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './layouts/header/header.component';
-import { FooterComponent } from './layouts/footer/footer.component';
 
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { DetailsProductComponent } from './components/details-product/details-product.component';
@@ -45,7 +44,6 @@ import { UserProfilImgComponent } from './auth/user-profil-img/user-profil-img.c
   declarations: [		
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     UpdateProductComponent,
     DetailsProductComponent,
     ProductsComponent,

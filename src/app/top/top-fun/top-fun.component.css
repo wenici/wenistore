@@ -26,6 +26,7 @@
 
 button {
     margin-top: 1rem;
+    font-size: .8rem;
     border-radius: 5px;
     background:#1d3557;
     font-weight: bold;
@@ -38,3 +39,8 @@ button:hover {
     background: #01bcbd;
 }
 
+.uk-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

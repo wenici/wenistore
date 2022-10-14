@@ -10,6 +10,7 @@ import { TopModeFemmeComponent } from './top-mode-femme/top-mode-femme.component
 import { TopSoinBeauteComponent } from './top-soin-beaute/top-soin-beaute.component';
 import { TopSupermarcheComponent } from './top-supermarche/top-supermarche.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FooterComponent } from '../layouts/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     TopModeFemmeComponent,
     TopSoinBeauteComponent,
     TopSupermarcheComponent,
-    SidebarComponent
+    SidebarComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     TopModeFemmeComponent,
     TopSoinBeauteComponent,
     TopSupermarcheComponent,
-    SidebarComponent
+    SidebarComponent,
+    FooterComponent
   ]
 })
 export class TopModule { }

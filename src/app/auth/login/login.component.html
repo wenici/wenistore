@@ -1,101 +1,49 @@
-<main>
-  <div class="box">
-    <div class="inner-box">
-      <div class="forms-wrap">
-        <form
-          [formGroup]="loginForm"
-          (ngSubmit)="onSubmit()"
-          class="sign-in-form"
-        >
-          <div class="heading">
-            <h2>Connectez-vous</h2>
-            <h6>Vous n'êtes pas encore inscrit ?</h6>
-            <a href="/register" class="toggle"> Inscrivez-vous ici</a>
-          </div>
 
-          <div class="actual-form">
-            <div class="input-wrap">
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
-              </svg>
-              <input
-                type="email"
-                formControlName="email"
-                placeholder="Email"
-                required
-              />
-            </div>
-            <div class="input-wrap">
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                ></path>
-              </svg>
-              <input
-                type="password"
-                formControlName="password"
-                placeholder="Mot de passe"
-                required
-              />
-            </div>
-
-            <button type="submit" class="sign-btn">
-              <span *ngIf="!isValidForm">Connexion</span>
-              <lord-icon *ngIf="isValidForm"
-                  src="https://cdn.lordicon.com/mwqnntww.json"
-                  trigger="loop"
-                  colors="primary:#FFFFFF"
-                  state="loop"
-                  style="width:30px;height:30px">
-              </lord-icon>
-            </button>
-
-            <p class="text">
-              Mot de passe oublié ?
-              <a href="#">Besoin d'aide ?</a>
-            </p>
-          </div>
-        </form>
-      </div>
-
-      <div class="carousel">
-        <div class="images-wrapper">
-          <img src="assets/img/img4.png" class="image img-3 show" alt="" />
+<section class="form-content">
+  <div class="uk-card uk-card-default uk-card-body">
+    <div>
+      <h2>Se connecter</h2>
+      <span>Connecte-toi et effectue tes achats en toute tranquilité</span>
+    </div>
+    <div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="personnel@gmail.com">
+          <span mat-icon-button matSuffix >
+            <mat-icon>email</mat-icon>
+          </span>
+          <mat-error *ngIf="!loginForm.valid">
+            S'il vous plait, entrez une adresse email valide
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+          <span mat-icon-button matSuffix (click)="hide = !hide" class="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </span>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="uk-width-1-1">
+          <span *ngIf="!isValidForm">Connexion</span>
+          <lord-icon *ngIf="isValidForm"
+              src="https://cdn.lordicon.com/mwqnntww.json"
+              trigger="loop"
+              colors="primary:#FFFFFF"
+              state="loop"
+              style="width:30px;height:30px">
+          </lord-icon>
+        </button>
+        <div class="links">
+          <span>
+            Vous êtes nouveau ?
+            <a [routerLink]="['/register']"> Créer un compte</a>
+          </span>
+          <span>
+            <a href="#">Mot de passe oublié ?</a>
+          </span>
         </div>
-
-        <div class="text-slider">
-          <div class="text-wrap">
-            <div class="text-group">
-              <h2>Connecte toi & fais tes achats tranquille</h2>
-            </div>
-          </div>
-
-          <div class="bullets">
-            <span class="active" data-value="1"></span>
-            <span class="active__1" data-value="1"></span>
-          </div>
-        </div>
-      </div>
+    </form>
     </div>
   </div>
-</main>
+</section>

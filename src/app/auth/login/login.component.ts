@@ -14,6 +14,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  hide = true;
   title = 'Weni Store - Connexion';
   isValidForm = false;
   isLoggedin: boolean = false;

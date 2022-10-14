@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   isValidForm = false;
   isLoggedin: boolean = false;
   userData: any; 
+  hide = true;
 
   constructor(
     private router: Router,
@@ -26,18 +27,13 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService,
     private formBuilder: UntypedFormBuilder,
-    private pswValid: PasswordValidationService,
   ) {}
 
   registerForm = this.formBuilder.group(
     {
       firstName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-    },
-    {
-      validator: this.pswValid.passwordMatchValidator( 'password', 'confirmPassword'),
+      password: ['', [Validators.required, Validators.minLength(8)]],
     }
   )
 
@@ -112,6 +108,7 @@ export class RegisterComponent implements OnInit {
           icon: 'error',
           title: 'Veillez renseigner correctement les differents s\'il vous plait'
         })
+        this.router.navigate(['register']);
       }
     } else if (
       this.registerForm.get('username')?.invalid
@@ -134,6 +131,7 @@ export class RegisterComponent implements OnInit {
         icon: 'error',
         title: 'Veillez renseigner correctement tous les differents s\'il vous plait'
       })
+      this.router.navigate(['register']);
     }
   }
 

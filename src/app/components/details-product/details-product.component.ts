@@ -27,6 +27,10 @@ export class DetailsProductComponent implements OnInit {
   title = this.msg;
   userCollection: AngularFirestoreCollection<User>
 
+  prod: any;
+  prodID: any;
+  products: Product | undefined;
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
@@ -44,6 +48,9 @@ export class DetailsProductComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const route = this.productIdRoute = String(routeParams.get('productId'));
     console.log(route);
+  //   const routeParamsx = this.route.snapshot.paramMap;
+  // const productIdFromRoute = Number(routeParams.get('productId'));
+  // this.product = products.find((product: { id: number; }) => product.id === productIdFromRoute);
   }
 
   saveCartLocation(): void {

@@ -1,0 +1,123 @@
+[debug] [2022-10-13T19:25:21.379Z] ----------------------------------------------------------------------
+[debug] [2022-10-13T19:25:21.380Z] Command:       /usr/local/bin/firebase /Users/gtms/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase emulators:start
+[debug] [2022-10-13T19:25:21.381Z] CLI Version:   9.8.0
+[debug] [2022-10-13T19:25:21.381Z] Platform:      darwin
+[debug] [2022-10-13T19:25:21.381Z] Node Version:  v12.2.0
+[debug] [2022-10-13T19:25:21.382Z] Time:          Thu Oct 13 2022 19:25:21 GMT+0000 (GMT)
+[debug] [2022-10-13T19:25:21.382Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-13T19:25:21.389Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-13T19:25:21.389Z] > authorizing via signed-in user
+[info] i  emulators: Starting emulators: functions, firestore, database, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, firestore, database, hosting"}}
+[debug] [2022-10-13T19:25:21.419Z] [hub] writing locator at /var/folders/vx/kc0nn11n5ml98d3rbc1_1nlc0000gn/T/hub-inflouis-01.json
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, pubsub {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, pubsub\u001b[22m"}}
+[info] ✔  functions: Using node@12 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@12 from host."}}
+[debug] [2022-10-13T19:25:21.463Z] defaultcredentials: writing to file /Users/gtms/.config/firebase/stephanekonan_dev_gmail.com_application_default_credentials.json
+[debug] [2022-10-13T19:25:21.481Z] Setting GAC to /Users/gtms/.config/firebase/stephanekonan_dev_gmail.com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/gtms/.config/firebase/stephanekonan_dev_gmail.com_application_default_credentials.json"}}
+[debug] [2022-10-13T19:25:21.483Z] > refreshing access token with scopes: []
+[debug] [2022-10-13T19:25:21.484Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-10-13T19:25:21.860Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Thu, 13 Oct 2022 19:25:22 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-10-13T19:25:21.976Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/inflouis-01/adminSdkConfig [none]
+[debug] [2022-10-13T19:25:22.545Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/inflouis-01/adminSdkConfig 200
+[debug] [2022-10-13T19:25:22.545Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/inflouis-01/adminSdkConfig {"projectId":"inflouis-01","databaseURL":"https://inflouis-01-default-rtdb.firebaseio.com","storageBucket":"inflouis-01.appspot.com","locationId":"us-central"}
+[debug] [2022-10-13T19:25:22.639Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2022-10-13T19:25:22.639Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-10-13T19:25:22.639Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/Users/gtms/.cache/firebase/emulators/cloud-firestore-emulator-v1.11.12.jar","--host","localhost","--port",8080,"--rules","/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/firestore.rules","--functions_emulator","localhost:5001"],"optionalArgs":["port","webchannel_port","host","rules","functions_emulator","seed_from_export"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/Users/gtms/.cache/firebase/emulators/cloud-firestore-emulator-v1.11.12.jar\",\"--host\",\"localhost\",\"--port\",8080,\"--rules\",\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/firestore.rules\",\"--functions_emulator\",\"localhost:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"functions_emulator\",\"seed_from_export\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2022-10-13T19:25:32.540Z] API endpoint: http://localhost: {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://localhost:"}}
+[debug] [2022-10-13T19:25:32.540Z] 8080
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=localhost:8080
+
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"8080\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=localhost:8080\n\nDev App Server is now running.\n\n"}}
+[debug] [2022-10-13T19:25:32.790Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/inflouis-01 [none]
+[debug] [2022-10-13T19:25:33.369Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/inflouis-01 200
+[debug] [2022-10-13T19:25:33.369Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/inflouis-01 {"projectId":"inflouis-01","projectNumber":"195523650478","displayName":"inflouis","name":"projects/inflouis-01","resources":{"hostingSite":"inflouis-01","realtimeDatabaseInstance":"inflouis-01-default-rtdb","storageBucket":"inflouis-01.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_8cbf16b4-57c9-40e2-9dc8-ac281457e186"}
+[debug] [2022-10-13T19:25:33.370Z] database rules config:  [{"instance":"inflouis-01-default-rtdb","rules":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/database.rules.json"}]
+[debug] [2022-10-13T19:25:33.371Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2022-10-13T19:25:33.371Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-10-13T19:25:33.371Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2022-10-13T19:25:33.371Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/gtms/.cache/firebase/emulators/firebase-database-emulator-v4.7.2.jar","--host","localhost","--port",9000,"--functions_emulator_host","localhost","--functions_emulator_port",5001],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host"],"joinArgs":false} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/gtms/.cache/firebase/emulators/firebase-database-emulator-v4.7.2.jar\",\"--host\",\"localhost\",\"--port\",9000,\"--functions_emulator_host\",\"localhost\",\"--functions_emulator_port\",5001],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\"],\"joinArgs\":false}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2022-10-13T19:25:34.545Z] WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by io.netty.util.internal.ReflectionUtil (file:/Users/gtms/.cache/firebase/emulators/firebase-database-emulator-v4.7.2.jar) to field sun.nio.ch.SelectorImpl.selectedKeys
+WARNING: Please consider reporting this to the maintainers of io.netty.util.internal.ReflectionUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+ {"metadata":{"emulator":{"name":"database"},"message":"WARNING: An illegal reflective access operation has occurred\nWARNING: Illegal reflective access by io.netty.util.internal.ReflectionUtil (file:/Users/gtms/.cache/firebase/emulators/firebase-database-emulator-v4.7.2.jar) to field sun.nio.ch.SelectorImpl.selectedKeys\nWARNING: Please consider reporting this to the maintainers of io.netty.util.internal.ReflectionUtil\nWARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations\nWARNING: All illegal access operations will be denied in a future release\n"}}
+[debug] [2022-10-13T19:25:36.106Z] 19:25:36.105 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"19:25:36.105 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2022-10-13T19:25:36.476Z] 19:25:36.476 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"19:25:36.476 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000\n"}}
+[debug] [2022-10-13T19:25:36.649Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/inflouis-01/webApps/-/config [none]
+[debug] [2022-10-13T19:25:37.421Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/inflouis-01/webApps/-/config 200
+[debug] [2022-10-13T19:25:37.421Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/inflouis-01/webApps/-/config {"projectId":"inflouis-01","databaseURL":"https://inflouis-01-default-rtdb.firebaseio.com","storageBucket":"inflouis-01.appspot.com","locationId":"us-central","apiKey":"AIzaSyDveZc68ct7gaLomIZoFWQ-Ih3XArtlWpA","authDomain":"inflouis-01.firebaseapp.com","messagingSenderId":"195523650478"}
+[info] i  hosting[inflouis]: Serving hosting files from: dist {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist\u001b[22m"}}
+[info] ✔  hosting[inflouis]: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[debug] [2022-10-13T19:25:37.951Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-10-13T19:25:37.951Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-10-13T19:25:37.951Z] Starting Emulator UI with command {"binary":"node","args":["/Users/gtms/.cache/firebase/emulators/ui-v1.4.2/server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/gtms/.cache/firebase/emulators/ui-v1.4.2/server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2022-10-13T19:25:38.315Z] Web / API server started at http://localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at http://localhost:4000\n"}}
+[info] i  functions: Watching "/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions\" for Cloud Functions..."}}
+[debug] [2022-10-13T19:25:38.470Z] [worker-pool] addWorker(~diagnostic~) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(~diagnostic~)"}}
+[debug] [2022-10-13T19:25:38.471Z] [worker-pool] Adding worker with key ~diagnostic~, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key ~diagnostic~, total=1"}}
+[debug] [2022-10-13T19:25:38.471Z] [worker-pool] submitWork(triggerId=) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=)"}}
+[debug] [2022-10-13T19:25:38.471Z] [worker-~diagnostic~-160eae51-0f45-4b28-8e04-b8f7451b2334]: Assigning socketPath: /var/folders/vx/kc0nn11n5ml98d3rbc1_1nlc0000gn/T/fire_emu_21839.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-160eae51-0f45-4b28-8e04-b8f7451b2334]: Assigning socketPath: /var/folders/vx/kc0nn11n5ml98d3rbc1_1nlc0000gn/T/fire_emu_21839.sock"}}
+[debug] [2022-10-13T19:25:38.471Z] [worker-~diagnostic~-160eae51-0f45-4b28-8e04-b8f7451b2334]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-160eae51-0f45-4b28-8e04-b8f7451b2334]: BUSY"}}
+[debug] [2022-10-13T19:25:38.839Z] [runtime-status] [21839] Functions runtime initialized. {"cwd":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions","node_version":"12.2.0"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Functions runtime initialized. {\"cwd\":\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions\",\"node_version\":\"12.2.0\"}"}}
+[debug] [2022-10-13T19:25:38.840Z] [runtime-status] [21839] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Disabled runtime features: undefined"}}
+[debug] [2022-10-13T19:25:38.842Z] [runtime-status] [21839] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.12.0","resolution":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2022-10-13T19:25:38.843Z] [runtime-status] [21839] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2022-10-13T19:25:38.844Z] [runtime-status] [21839] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2022-10-13T19:25:38.846Z] [runtime-status] [21839] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-10-13T19:25:38.846Z] [runtime-status] [21839] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2022-10-13T19:25:38.876Z] [runtime-status] [21839] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-10-13T19:25:38.876Z] [runtime-status] [21839] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.24.1","resolution":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js\"}}"}}
+[debug] [2022-10-13T19:25:38.876Z] [runtime-status] [21839] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2022-10-13T19:25:38.877Z] [runtime-status] [21839] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.12.0","resolution":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2022-10-13T19:25:38.877Z] [runtime-status] [21839] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2022-10-13T19:25:38.878Z] [runtime-status] [21839] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"9.12.0","resolution":"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [21839] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"/Users/gtms/Desktop/bureau/WeniBySteph/e-commerce/wenistore-prod/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2022-10-13T19:25:38.916Z] >>> HTTP REQUEST PUT http://localhost:9000/.settings/rules.json?ns=inflouis-01-default-rtdb  
+ {
+  "rules": {
+    ".read": "now < 1659657600000",  // 2022-8-5
+    ".write": "now < 1659657600000",  // 2022-8-5
+  }
+}
+[debug] [2022-10-13T19:25:38.918Z] [worker-~diagnostic~-160eae51-0f45-4b28-8e04-b8f7451b2334]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-160eae51-0f45-4b28-8e04-b8f7451b2334]: IDLE"}}
+[debug] [2022-10-13T19:25:39.762Z] <<< HTTP RESPONSE 200 {"content-length":"15","content-type":"application/json; charset=utf-8","access-control-allow-origin":"*","cache-control":"no-cache","x-firebase-project-id":"inflouis-01-default-rtdb","x-firebase-project-number":"123456789","x-firebase-uuid":"bd7b18c0-4598-4604-8f4d-d547ee4740a9"}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:4000                │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ localhost:5001 │ http://localhost:4000/functions │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Firestore │ localhost:8080 │ http://localhost:4000/firestore │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Database  │ localhost:9000 │ http://localhost:4000/database  │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Hosting   │ localhost:5000 │ n/a                             │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2022-10-13T19:26:52.053Z] Oct 13, 2022 7:26:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 13, 2022 7:26:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-10-13T19:26:52.475Z] Oct 13, 2022 7:26:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 13, 2022 7:26:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+                                                            

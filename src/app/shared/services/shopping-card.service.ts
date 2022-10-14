@@ -29,10 +29,10 @@ export class ShoppingCardService {
     product.isMyProduct = shopCartPrtDoc.exists;
   }
 
-  addToMyCart(product: Product, userID: string, qteProduct: number): Promise<void> {
+  addToMyCart(product: Product, userID: string, qteProduct: number) {
     const productDoc = this.dbstore.doc(product.id);
     productDoc.update({ quantity: qteProduct });
-    const userDoc = this.userCollection.doc(userID);
+    const userDoc = this.dbstore.firestore.collection('users').doc(userID)
     const userShoppingProduct = userDoc.collection('shopping');
     return userShoppingProduct.doc(product.id).set(product);
   }
